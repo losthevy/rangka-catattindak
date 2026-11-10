@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RANGKA · Purwarupa Protokol Keselamatan Ruang Kelas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#15305C;--red:#A31621;--gray:#F1F2F4;--line:#E3E6EB;--txt:#1F2329;--muted:#5B6270;--green:#2E7D32;--amber:#C98A00;--pink:#FBEDEE;--blue:#2F6DB5}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,system-ui,sans-serif;color:var(--txt);background:#fff;font-size:14px;line-height:1.5}
+.top{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line)}
+.bar{height:4px;background:linear-gradient(90deg,var(--red) 0 22%,var(--navy) 22%)}
+.head{display:flex;align-items:center;gap:10px;padding:10px 16px;max-width:1100px;margin:auto}
+.logo{width:34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700}
+.brand b{font-weight:700;color:var(--navy);font-size:16px}.brand b span{color:var(--red)}
+.brand small{display:block;color:var(--muted);font-size:11px;margin-top:-3px}
+.tabs{display:flex;gap:6px;padding:0 16px 10px;max-width:1100px;margin:auto;overflow-x:auto}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font:600 12.5px Poppins;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab.on{background:var(--navy);border-color:var(--navy);color:#fff}
+main{max-width:1100px;margin:auto;padding:16px}
+.view{display:none}.view.on{display:block}
+h2{font-size:19px;color:var(--navy);font-weight:700;margin-bottom:2px}h2 em{font-style:normal;color:var(--red)}
+.sub{color:var(--muted);font-size:12.5px;margin-bottom:14px}
+.card{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;margin-bottom:12px}
+.card.g{background:var(--gray);border-color:var(--gray)}
+.row{display:flex;gap:10px;align-items:center}.sp{flex:1}
+.lab{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+select,input[type=text]{font:500 13px Poppins;border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;background:#fff}
+.grid6{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.slot{border:1.5px dashed #C5CCD8;border-radius:12px;padding:10px;min-height:118px;display:flex;flex-direction:column;gap:6px;cursor:pointer;position:relative;background:#fff}
+.slot.done{border-style:solid;border-color:var(--navy)}
+.slot .nm{font-weight:700;color:var(--navy);font-size:13px}
+.thumb{height:52px;border-radius:8px;background:var(--gray);display:grid;place-items:center;color:var(--muted);font-size:11px;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:11px;font-weight:700;color:#fff}
+.H{background:var(--green)}.K{background:var(--amber)}.M{background:var(--red)}.N{background:#9AA6BC}
+.btn{border:0;border-radius:10px;padding:10px 14px;font:700 13px Poppins;cursor:pointer;background:var(--navy);color:#fff}
+.btn.r{background:var(--red)}.btn.o{background:#fff;color:var(--navy);border:1.5px solid var(--navy)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.meter{height:12px;border-radius:99px;background:var(--gray);overflow:hidden;position:relative}
+.meter i{display:block;height:100%;border-radius:99px}
+.ticks{display:flex;justify-content:space-between;font-size:10.5px;color:var(--muted);margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;padding:7px 6px;border-bottom:1px solid var(--line)}
+td{padding:8px 6px;border-bottom:1px solid var(--line)}
+.big{font-size:34px;font-weight:700;color:var(--navy);line-height:1.1}
+.big.r{color:var(--red)}
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.kpi{background:var(--gray);border-radius:12px;padding:12px}
+.kpi b{display:block;font-size:24px;color:var(--navy)}.kpi.r b{color:var(--red)}
+.kpi span{font-size:11.5px;color:var(--muted);font-weight:500}
+.rule{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}
+.rule:last-child{border:0}
+.sw{appearance:none;width:38px;height:22px;border-radius:99px;background:#C5CCD8;position:relative;cursor:pointer;flex:none;margin-top:2px}
+.sw:checked{background:var(--red)}.sw::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:2px;left:2px;transition:.15s}
+.sw:checked::after{left:18px}
+.alert{border-radius:14px;padding:14px;background:var(--pink);border:1.5px solid var(--red);color:var(--red)}
+.alert b{font-size:16px}
+.step{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border:0}
+.ck{width:22px;height:22px;border-radius:6px;border:2px solid var(--navy);flex:none;display:grid;place-items:center;color:#fff;font-size:13px;cursor:pointer}
+.ck.on{background:var(--navy)}
+.note{font-size:11.5px;color:var(--muted)}
+.foot{background:var(--navy);color:#fff;text-align:center;font-weight:600;font-size:12.5px;padding:10px;border-radius:12px;margin-top:6px}
+.dash{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:900px){.dash{grid-template-columns:1.25fr 1fr}.kpis{grid-template-columns:repeat(4,1fr)}.grid6{grid-template-columns:repeat(3,1fr)}}
+.bars div{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:12px}
+.bars span{width:120px;font-weight:600}.bars i{height:14px;border-radius:6px;display:block}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 16px;border-radius:12px;font-weight:600;font-size:13px;display:none;z-index:9}
+</style>
+</head>
+<body>
+<div class="top"><div class="bar"></div>
+<div class="head"><div class="logo">R</div><div class="brand"><b>RANG<span>KA</span></b><small>Protokol keselamatan ruang kelas berbasis AI citra ponsel</small></div><div class="sp"></div><span class="pill N" id="sinyal">Luring</span></div>
+<div class="tabs">
+<button class="tab on" data-v="pindai">1 · PINDAI</button>
+<button class="tab" data-v="timbang">2 · TIMBANG</button>
+<button class="tab" data-v="tindak">3 · TINDAK</button>
+<button class="tab" data-v="dinas">Dasbor Dinas</button>
+</div></div>
+<main>
+
+<!-- PINDAI -->
+<section class="view on" id="pindai">
+<h2>Pindai <em>Ruang Kelas</em></h2>
+<p class="sub">Enam foto terpandu setiap awal bulan dan setelah hujan lebat, angin kencang, atau gempa.</p>
+<div class="card g"><div class="row">
+<div class="sp"><div class="lab">Sekolah</div><select id="sekolah"><option>SMK Negeri 1 Gunung Putri · Kab. Bogor</option><option>SD Negeri Contoh 01 · Kab. Mamuju</option></select></div>
+<div style="width:38%"><div class="lab">Ruang</div><select id="ruang"><option>Kelas X-1</option><option>Kelas X-2</option><option>Kelas XI-1</option></select></div>
+</div>
+<div class="row" style="margin-top:8px"><div class="lab">Pemicu</div><div class="sp"></div>
+<select id="pemicu" style="width:60%"><option>Rutin awal bulan</option><option>Setelah hujan lebat</option><option>Setelah angin kencang</option><option>Setelah gempa</option></select></div></div>
+<div class="grid6" id="slots"></div>
+<p class="note" style="margin:8px 2px 12px">Ketuk kotak untuk memotret atau memilih foto. Foto hanya memuat bangunan tanpa wajah murid, diberi tanda waktu dan lokasi, lalu dikunci sidik digital.</p>
+<div class="row"><button class="btn o" id="demo">Isi contoh</button><div class="sp"></div><button class="btn" id="kirim" disabled>Kirim ke TIMBANG</button></div>
+<input type="file" id="file" accept="image/*" capture="environment" hidden>
+</section>
+
+<!-- TIMBANG -->
+<section class="view" id="timbang">
+<h2>Timbang <em>Tingkat Bahaya</em></h2>
+<p class="sub">Skor AI per komponen dikalikan bobot komponen, lalu dibandingkan dengan ambang resmi Dapodik.</p>
+<div class="card"><div class="row"><div class="sp"><div class="lab">Perkiraan kerusakan</div><div class="big" id="persen">0%</div></div><span class="pill N" id="statusPill" style="font-size:14px;padding:6px 14px">BELUM DINILAI</span></div>
+<div class="meter" style="margin-top:10px"><i id="meterFill" style="width:0;background:var(--navy)"></i></div>
+<div class="ticks"><span>0</span><span>Hijau &lt;31</span><span>Kuning 31-45</span><span>Merah &gt;45</span><span>100</span></div></div>
+<div class="card"><table><thead><tr><th>Komponen</th><th>Skor AI</th><th>Keyakinan</th><th>Bobot*</th></tr></thead><tbody id="tbl"></tbody></table>
+<p class="note" style="margin-top:6px">*Bobot demo. Implementasi memakai bobot formulir kerusakan Kementerian PU yang dipakai Dapodik.</p></div>
+<div class="card"><div class="lab" style="margin-bottom:4px">Aturan pengaman</div>
+<div class="rule"><input type="checkbox" class="sw" id="r1" disabled><div><b>Struktur utama rusak berat</b><div class="note">Kolom, balok, atau rangka atap berskor berat langsung menaikkan status menjadi Merah.</div></div></div>
+<div class="rule"><input type="checkbox" class="sw" id="r2"><div><b>Konstruksi sedang berjalan</b><div class="note">Bangunan yang dipakai selama pengecoran atau renovasi langsung berstatus Merah.</div></div></div>
+<div class="rule"><input type="checkbox" class="sw" id="r3"><div><b>Satu rangkaian atap dengan ruang Merah</b><div class="note">Ruang yang berbagi rangka atap mengikuti status tertinggi.</div></div></div>
+<div class="rule"><input type="checkbox" class="sw" id="r4" disabled><div><b>Rujuk pemeriksa manusia</b><div class="note">Aktif otomatis bila keyakinan AI di bawah 70 persen atau rangka kayu terdeteksi rusak.</div></div></div>
+</div>
+<button class="btn r" id="keTindak" style="width:100%">Terbitkan keputusan</button>
+</section>
+
+<!-- TINDAK -->
+<section class="view" id="tindak">
+<h2>Tindak <em>Bertenggat</em></h2>
+<p class="sub">Status berubah menjadi perintah yang tercatat tanggalnya.</p>
+<div id="tindakBox"></div>
+</section>
+
+<!-- DINAS -->
+<section class="view" id="dinas">
+<h2>Dasbor <em>Dinas</em></h2>
+<p class="sub">Urutan prioritas berbasis bukti dan penghitung Hari Kelas Merah per ruang. <span class="pill N">Data demo</span></p>
+<div class="kpis" id="kpis"></div>
+<div class="dash" style="margin-top:12px">
+<div class="card"><div class="lab" style="margin-bottom:6px">Antrean ruang berstatus Merah</div><table><thead><tr><th>Sekolah · ruang</th><th>Status</th><th>HKM</th><th>Verifikasi</th></tr></thead><tbody id="antre"></tbody></table></div>
+<div class="card"><div class="lab">Sebaran status ruang</div><div class="bars" id="bars"></div>
+<div class="lab" style="margin-top:12px">Tiket verifikasi ahli</div><div id="tiket" class="note"></div></div>
+</div>
+<div class="foot">Target: nilai tengah Hari Kelas Merah paling lama 1 hari</div>
+</section>
+</main>
+<div class="toast" id="toast"></div>
+<script>
+const KOMP=[["Kolom",20,1],["Balok",20,1],["Rangka atap",25,1],["Plafon",10,0],["Dinding",15,0],["Lantai",10,0]];
+const DEMO=[0.42,0.35,0.78,0.80,0.40,0.25];
+let foto=KOMP.map(()=>null),cur=-1,hasil=null;
+const $=s=>document.querySelector(s);
+function toast(t){const e=$("#toast");e.textContent=t;e.style.display="block";clearTimeout(e._t);e._t=setTimeout(()=>e.style.display="none",1900)}
+document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.v));
+function go(v){document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.dataset.v==v));document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id==v));if(v=="dinas")dash();scrollTo(0,0)}
+function kelas(s){return s<0.31?["Ringan","H"]:s<=0.45?["Sedang","K"]:["Berat","M"]}
+function hash(str){let h=2166136261;for(const c of str){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return (h>>>0).toString(16).padStart(8,"0")}
+function svgT(i,sc){const base=["#B9BEC7","#C3C7CE","#A98E6A","#E4E2DC","#D9D4CB","#BFB8AA"][i];const c=sc>0.45?"#7A1018":sc>0.3?"#5B4A2E":"#6B7280";const n=Math.round(sc*7)+1;let p="";for(let k=0;k<n;k++){const x=10+k*22%150,y=8+(k*13)%30;p+=`<path d="M${x} ${y} l12 8 l-6 10 l14 9" stroke="${c}" stroke-width="${1+sc*3}" fill="none"/>`}
+const st=i==2?`<g stroke="#6B5434" stroke-width="5">${[20,60,100,140].map(x=>`<line x1="${x}" y1="0" x2="${x-15}" y2="52"/>`).join("")}</g>`:"";
+return `<svg viewBox="0 0 170 52" preserveAspectRatio="none" style="width:100%;height:100%"><rect width="170" height="52" fill="${base}"/>${st}${p}<rect x="4" y="38" width="62" height="11" rx="3" fill="#15305C"/><text x="8" y="46.5" font-size="7.5" fill="#fff" font-family="Poppins" font-weight="700">${new Date().toLocaleDateString("id-ID")}</text></svg>`}
+function render(){const g=$("#slots");g.innerHTML="";KOMP.forEach(([n],i)=>{const f=foto[i];const d=document.createElement("div");d.className="slot"+(f?" done":"");
+d.innerHTML=`<div class="row"><span class="nm">${i+1}. ${n}</span><div class="sp"></div>${f?`<span class="pill ${kelas(f.s)[1]}">${kelas(f.s)[0]}</span>`:""}</div>
+<div class="thumb">${f&&f.img?`<img src="${f.img}">`:f?svgT(i,f.s):"Ketuk untuk foto"}</div>
+<div class="note">${f?`Skor ${Math.round(f.s*100)} · yakin ${Math.round(f.c*100)}% · #${f.h}`:"Panduan: ambil dari jarak 2 meter"}</div>`;
+d.onclick=()=>{cur=i;$("#file").click()};g.appendChild(d)});$("#kirim").disabled=!foto.every(Boolean)}
+function ai(i,seed){/* simulasi CNN ringan di perangkat: skor dan keyakinan */const r=parseInt(hash(seed),16);return{s:Math.min(.95,Math.max(.05,(r%1000)/1000)),c:.62+((r>>10)%35)/100}}
+$("#file").onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{const o=ai(cur,f.name+f.size);foto[cur]={...o,img:rd.result,h:hash(f.name+Date.now()).slice(0,6),t:new Date()};render();toast("Foto "+KOMP[cur][0]+" dinilai AI")};rd.readAsDataURL(f);e.target.value=""};
+$("#demo").onclick=()=>{foto=KOMP.map((k,i)=>({s:DEMO[i],c:i==2?.66:.86,h:hash(k[0]+i).slice(0,6),t:new Date()}));render();toast("Contoh enam foto terisi")};
+$("#kirim").onclick=()=>{timbang();go("timbang")};
+["r2","r3"].forEach(id=>$("#"+id).onchange=timbang);
+function timbang(){if(!foto.every(Boolean))return;let tot=0,wsum=0,rows="",struk=false,rujuk=false;
+KOMP.forEach(([n,w,st],i)=>{const f=foto[i];tot+=f.s*w;wsum+=w;if(st&&f.s>0.45)struk=true;if(f.c<.7||(n=="Rangka atap"&&f.s>0.45))rujuk=true;
+rows+=`<tr><td><b>${n}</b></td><td><span class="pill ${kelas(f.s)[1]}">${Math.round(f.s*100)}</span></td><td>${Math.round(f.c*100)}%</td><td>${w}</td></tr>`});
+const p=Math.round(tot/wsum*100);$("#tbl").innerHTML=rows;$("#persen").textContent=p+"%";
+$("#r1").checked=struk;$("#r4").checked=rujuk;
+let st=p<31?"HIJAU":p<=45?"KUNING":"MERAH";if(struk||$("#r2").checked||$("#r3").checked)st="MERAH";
+const cls={HIJAU:"H",KUNING:"K",MERAH:"M"}[st];$("#statusPill").className="pill "+cls;$("#statusPill").textContent=st;
+const col={H:"var(--green)",K:"var(--amber)",M:"var(--red)"}[cls];$("#meterFill").style.width=p+"%";$("#meterFill").style.background=col;
+$("#persen").className="big"+(cls=="M"?" r":"");hasil={p,st,struk,rujuk,t:new Date()}}
+$("#keTindak").onclick=()=>{if(!hasil){toast("Isi enam foto lebih dulu");go("pindai");return}tindak();go("tindak")};
+let langkah=[false,false,false];
+function tindak(){const b=$("#tindakBox");const ruang=$("#ruang").value,sk=$("#sekolah").value.split(" · ")[0];
+if(hasil.st=="MERAH"){const batas=new Date(hasil.t.getTime()+864e5),ver=new Date(hasil.t.getTime()+7*864e5);
+b.innerHTML=`<div class="alert"><b>STATUS MERAH · ${ruang}</b><div style="color:var(--txt);margin-top:4px">${sk}. Ruang wajib dikosongkan paling lambat <b>${batas.toLocaleString("id-ID",{dateStyle:"medium",timeStyle:"short"})}</b>.</div></div>
+<div class="card" style="margin-top:12px"><div class="row"><div class="sp"><div class="lab">Sisa waktu pengosongan</div><div class="big r" id="cd">24:00:00</div></div><div><div class="lab">Hari Kelas Merah</div><div class="big" id="hkm">0</div></div></div></div>
+<div class="card"><div class="lab">Perintah bertenggat</div>
+${["Pindahkan murid ke ruang pengganti atau jadwal bergilir pagi dan siang","Pasang tanda larangan masuk pada ruang Merah","Konfirmasi ruang kosong dengan foto pintu tertutup"].map((t,i)=>`<div class="step"><div class="ck ${langkah[i]?"on":""}" data-i="${i}">${langkah[i]?"✓":""}</div><div>${t}</div></div>`).join("")}</div>
+<div class="card g"><div class="lab">Tiket verifikasi ahli</div><div style="margin-top:4px"><b>#RK-${hash(ruang+sk).slice(0,5).toUpperCase()}</b> · dinas teknis atau tenaga ahli revitalisasi · tenggat <b>${ver.toLocaleDateString("id-ID",{dateStyle:"medium"})}</b></div>
+<div class="note" style="margin-top:4px">${hasil.rujuk?"Foto rangka atap dirujuk ke pemeriksa manusia. ":""}Hasil verifikasi menaikkan tiket ke antrean prioritas revitalisasi dan menjadi label latih ulang PINDAI.</div></div>
+<div class="row" style="margin-top:4px"><button class="btn o" onclick="go('dinas')">Lihat dasbor dinas</button><div class="sp"></div><button class="btn" id="sanggah">Ajukan sanggah</button></div>`;
+b.querySelectorAll(".ck").forEach(c=>c.onclick=()=>{langkah[c.dataset.i]=!langkah[c.dataset.i];tindak()});
+$("#sanggah").onclick=()=>{toast("Sanggah tercatat, foto ulang diminta");go("pindai")};tick();}
+else if(hasil.st=="KUNING"){b.innerHTML=`<div class="card" style="border-color:var(--amber)"><span class="pill K">KUNING</span><p style="margin-top:8px">Ruang tetap dipakai dengan pemantauan ulang 14 hari. Perbaikan komponen nonstruktural diarahkan ke porsi pemeliharaan dana BOSP.</p></div>`}
+else b.innerHTML=`<div class="card" style="border-color:var(--green)"><span class="pill H">HIJAU</span><p style="margin-top:8px">Ruang layak dipakai. Pemindaian berikutnya pada awal bulan depan atau setelah cuaca ekstrem.</p></div>`}
+function tick(){const e=$("#cd");if(!e||!hasil)return;const sisa=hasil.t.getTime()+864e5-Date.now();const s=Math.max(0,sisa/1000|0);
+e.textContent=[s/3600|0,(s%3600)/60|0,s%60].map(x=>String(x).padStart(2,"0")).join(":");$("#hkm").textContent=(langkah[0]&&langkah[2])?"0":String(Math.floor((Date.now()-hasil.t)/864e5));setTimeout(tick,1000)}
+const DATA=[["SMKN 1 Gunung Putri","Kelas X-1","M",0,"Terjadwal"],["SMKN 1 Gunung Putri","Kelas X-2","M",0,"Terjadwal"],["SDN Contoh 07 Mamuju","Kelas IV","M",1,"Diperiksa"],["SDN Contoh 12 Mamuju","Kelas II","M",2,"Menunggu"],["SDN Contoh 03 Bogor","Kelas VI","M",0,"Selesai"]];
+function dash(){const m=DATA.length,hk=DATA.map(d=>d[3]).sort((a,b)=>a-b),med=hk[Math.floor(m/2)];
+$("#kpis").innerHTML=`<div class="kpi"><b>212</b><span>Ruang terpindai bulan ini</span></div><div class="kpi r"><b>${m}</b><span>Ruang berstatus Merah</span></div><div class="kpi"><b>${med} hari</b><span>Nilai tengah HKM</span></div><div class="kpi"><b>3 dari 5</b><span>Tiket terverifikasi tepat waktu</span></div>`;
+$("#antre").innerHTML=DATA.map(d=>`<tr><td><b>${d[0]}</b><div class="note">${d[1]}</div></td><td><span class="pill ${d[2]}">MERAH</span></td><td><b style="color:${d[3]>1?"var(--red)":"var(--navy)"}">${d[3]}</b></td><td>${d[4]}</td></tr>`).join("");
+const sb=[["Hijau",120,"var(--green)"],["Kuning",87,"var(--amber)"],["Merah",5,"var(--red)"]];
+$("#bars").innerHTML=sb.map(([n,v,c])=>`<div><span>${n}</span><i style="width:${v*1.6}px;background:${c}"></i><b>${v}</b></div>`).join("");
+$("#tiket").innerHTML="Dua tiket melewati 24 jam pengosongan masuk sorotan merah. Tiket selesai menaikkan ruang ke antrean prioritas revitalisasi."}
+render();
+</script>
+</body>
+</html>
